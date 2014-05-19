@@ -13,6 +13,7 @@
 {
     BOOL _buttonToggle;
 }
+@property (strong, nonatomic) IBOutlet UIButton *button;
 @end
 
 @implementation PPSpringButtonViewController
@@ -42,7 +43,7 @@
 {
     _buttonToggle = !_buttonToggle;
     
-    CALayer *layer = sender.layer;
+    CALayer *layer = self.button.layer;
     
     // First let's remove any existing animations
     [layer pop_removeAllAnimations];
@@ -53,13 +54,13 @@
     {
         anim.toValue = [NSValue valueWithCGSize:CGSizeMake(44, 44)];
         rotation.toValue = @(M_PI_4);
-        sender.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
+        self.button.tintColor = [UIColor colorWithRed:0.0 green:122.0/255.0 blue:1.0 alpha:1.0];
     }
     else
     {
         anim.toValue = [NSValue valueWithCGSize:CGSizeMake(34, 34)];
         rotation.toValue = @(0);
-        sender.tintColor = [UIColor redColor];
+        self.button.tintColor = [UIColor redColor];
     }
     
     anim.springBounciness = 20;
